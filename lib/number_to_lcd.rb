@@ -19,20 +19,20 @@ class LcdConverter
   def digits_for(number)
     result = []
     begin
-      result << number % 10
+      result.unshift(number % 10)
       number /= 10
     end while number > 0
-    result.reverse
+    result
   end
 
   def join_segments(digit_segments)
     head, *tail = digit_segments
-    head.zip(*tail).map { |pair| pair.join(" ") }.join("\n")
+    head.zip(*tail).map { |pair| pair.join(" ") }
   end
 
   def convert(number)
     digit_segments = digits_for(number).map { |d| digit_segments(d) }
-    join_segments(digit_segments) + "\n"
+    join_segments(digit_segments).join("\n") + "\n"
   end
 end
 
