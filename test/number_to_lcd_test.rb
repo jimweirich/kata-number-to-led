@@ -20,11 +20,11 @@ class NumberToLcdTest < Given::TestCase
   end
 
   LCD_ONE = <<LCD
-
-   |
-
-   |
-
+   
+  |
+   
+  |
+   
 LCD
   LCD_TWO = <<LCD
  - 
