@@ -18,19 +18,23 @@ rescue LoadError
   puts "Jeweler (or a dependency) not available. Install it with: sudo gem install jeweler"
 end
 
-require 'spec/rake/spectask'
-Spec::Rake::SpecTask.new(:spec) do |spec|
-  spec.libs << 'lib' << 'spec'
-  spec.spec_files = FileList['spec/**/*_spec.rb']
+require 'rake/testtask'
+Rake::TestTask.new(:tests) do |t|
+  t.test_files = FileList['test/*_test.rb']
 end
 
-Spec::Rake::SpecTask.new(:rcov) do |spec|
-  spec.libs << 'lib' << 'spec'
-  spec.pattern = 'spec/**/*_spec.rb'
-  spec.rcov = true
+require 'rcov/rcovtask'
+Rcov::RcovTask.new do |t|
+  t.libs << "test"
+  t.rcov_opts = [
+    '-xRakefile', 
+    '-x/Library', 
+    '--text-report',
+    '--sort coverage'
+  ]
+  t.test_files = FileList['test/*_test.rb']
+  t.output_dir = 'coverage'
 end
-
-task :spec => :check_dependencies
 
 begin
   require 'cucumber/rake/task'
