@@ -1,7 +1,7 @@
 class LcdConverter
-  # STEP 4 -- Implement two.  Use a simple if test.
-  def convert(this_number)
-    if this_number == 1
+  # STEP 5 -- Refactor.  Rename this_number -> number.
+  def convert(number)
+    if number == 1
       "   \n" +
         "  |\n" +
         "   \n" +
