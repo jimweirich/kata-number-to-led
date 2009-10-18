@@ -1,5 +1,5 @@
 class LcdConverter
-  SEGMENTS = {}
+  SEGMENTS = Hash.new { |h, k| h[k] = [] }
 
   [
     " - ,   , - , - ,   , - , - , - , - , - ",
@@ -9,20 +9,13 @@ class LcdConverter
     " - ,   , - , - ,   , - , - ,   , - , - ",
   ].each do |string|
     string.split(",").each_with_index do |seg, i|
-      SEGMENTS[i] ||= []
       SEGMENTS[i] << seg
     end
   end
 
-  # STEP 18 -- Refactor.  I'm happy with the code at this point.  I
-  # find the overly long hash initialization a bit annoying.  By
-  # lightly encoding the segment definitions, we can dynamically
-  # extract them to initialize the hash.  As a benefit, the encoded
-  # segments are quite easy to visually verify without scrolling
-  # through multiple pages.
-  #
-  # It was a bit tedious to encode the segments, but a simple on the
-  # fly emacs macro made the translation very painless.
+  # STEP 19 -- Refactor.  Initializing the SEGMENTS with ||= on each
+  # loop thru is annoying.  Let's fix that by changing the hash
+  # definition.
 
   def digits_for(n)
     result = []
