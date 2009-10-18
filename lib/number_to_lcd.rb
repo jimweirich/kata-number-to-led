@@ -1,25 +1,26 @@
 class LcdConverter
-  # STEP 6 -- Another Refactor.  Change concatentated strings to
-  # arrays, removing new lines so they can be applied later.
+  # STEP 7 -- More refactoring.  The if statement isn't going to
+  # scale.  I could go to a case statement, but I think I will jump
+  # directly a hash for the digit segments.
+  SEGMENTS = {
+    1 => [
+      "   ",
+      "  |",
+      "   ",
+      "  |",
+      "   ",
+    ],
+    2 => [
+      " - ",
+      "  |",
+      " - ",
+      "|  ",
+      " - ",
+    ]
+  }
+
   def convert(number)
-    segments = if number == 1
-      [
-        "   ",
-        "  |",
-        "   ",
-        "  |",
-        "   ",
-      ]
-    else
-      [
-        " - ",
-        "  |",
-        " - ",
-        "|  ",
-        " - ",
-      ]
-    end
-    segments.map { |seg| "#{seg}\n" }.join
+    SEGMENTS[number].map { |seg| "#{seg}\n" }.join
   end
 end
 
