@@ -72,7 +72,8 @@ class LcdConverter
     ],
   }
 
-  # STEP 14 -- Refactor.  Extract method digits_for.
+
+  # STEP 15 -- Refactor. Inlining the merged_segments local variable.
 
   def digits_for(n)
     result = []
@@ -97,8 +98,7 @@ class LcdConverter
       digits_segments(number).map { |seg| "#{seg}\n" }.join
     else
       segments = digits_for(number).map { |d| digits_segments(d) }
-      merged_segments = merge_segments(segments)
-      merged_segments.map { |seg| "#{seg}\n" }.join
+      merge_segments(segments).map { |seg| "#{seg}\n" }.join
     end
   end
 end
