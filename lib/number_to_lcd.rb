@@ -72,7 +72,8 @@ class LcdConverter
     ],
   }
 
-  # STEP 11 -- Refactor.  Extract method merge_segments.
+  # STEP 12 -- Implement 345.  Getting individual hi/lo digits won't
+  # work so we need to pull individual digits in a loop.
 
   def digits_segments(digit)
     SEGMENTS[digit]
@@ -87,9 +88,13 @@ class LcdConverter
     if number < 10
       digits_segments(number).map { |seg| "#{seg}\n" }.join
     else
-      lo = digits_segments(number % 10)
-      hi = digits_segments((number/10) % 10)
-      merged_segments = merge_segments([hi, lo])
+      digits = []
+      while number > 0
+        digits.unshift(number % 10)
+        number /= 10
+      end
+      segments = digits.map { |d| digits_segments(d) }
+      merged_segments = merge_segments(segments)
       merged_segments.map { |seg| "#{seg}\n" }.join
     end
   end

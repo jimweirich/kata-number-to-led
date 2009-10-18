@@ -19,7 +19,7 @@ class NumberToLcdTest < Given::TestCase
     Then { expect(convert(9)) == LCD_NINE }
     Then { expect(convert(0)) == LCD_ZERO }
     Then { expect(convert(12)) == LCD_TWELVE }
-    # Then { expect(convert(345)) == LCD_345 }
+    Then { expect(convert(345)) == LCD_345 }
     # Then { expect(convert(67890)) == LCD_67890 }
   end
 
