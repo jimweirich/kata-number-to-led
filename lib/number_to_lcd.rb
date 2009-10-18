@@ -72,8 +72,16 @@ class LcdConverter
     ],
   }
 
-  # STEP 13 -- This code should work for arbitrary numbers now, so we
-  # uncomment the last remaining test.
+  # STEP 14 -- Refactor.  Extract method digits_for.
+
+  def digits_for(n)
+    result = []
+    while n > 0
+      result.unshift(n % 10)
+      n /= 10
+    end
+    result
+  end
 
   def digits_segments(digit)
     SEGMENTS[digit]
@@ -88,12 +96,7 @@ class LcdConverter
     if number < 10
       digits_segments(number).map { |seg| "#{seg}\n" }.join
     else
-      digits = []
-      while number > 0
-        digits.unshift(number % 10)
-        number /= 10
-      end
-      segments = digits.map { |d| digits_segments(d) }
+      segments = digits_for(number).map { |d| digits_segments(d) }
       merged_segments = merge_segments(segments)
       merged_segments.map { |seg| "#{seg}\n" }.join
     end
