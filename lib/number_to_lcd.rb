@@ -72,9 +72,7 @@ class LcdConverter
     ],
   }
 
-  # STEP 16 -- Shouldn't need test for < 10 in convert anymore.  In
-  # removing test, we discover a bug in digits_for that is easily
-  # fixed by changing the while loop into an do/while loop.
+  # STEP 17 -- Refactor. Extract the join_lines method.
 
   def digits_for(n)
     result = []
@@ -94,9 +92,13 @@ class LcdConverter
     head.zip(*tail).map { |segs| segs.join(' ') }
   end
 
+  def join_lines(lines)
+    lines.map { |seg| "#{seg}\n" }.join
+  end
+
   def convert(number)
     segments = digits_for(number).map { |d| digits_segments(d) }
-    merge_segments(segments).map { |seg| "#{seg}\n" }.join
+    join_lines(merge_segments(segments))
   end
 end
 
