@@ -1,5 +1,10 @@
 class NumberToLcd
-  # STEP 1 -- Disable the tests so we can re-enable them one by one.
+  # STEP 2 -- Implement convert for 1
   def self.convert(this_number)
+    "   \n" +
+      "  |\n" +
+      "   \n" +
+      "  |\n" +
+      "   \n" 
   end
 end

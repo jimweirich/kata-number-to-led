@@ -8,7 +8,7 @@ class NumberToLcdTest < Given::TestCase
   end
 
   Given do
-    # Then { expect(convert(1)) == LCD_ONE }
+    Then { expect(convert(1)) == LCD_ONE }
     # Then { expect(convert(2)) == LCD_TWO }
     # Then { expect(convert(3)) == LCD_THREE }
     # Then { expect(convert(4)) == LCD_FOUR }
