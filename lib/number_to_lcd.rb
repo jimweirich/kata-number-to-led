@@ -1,13 +1,19 @@
 class LcdConverter
-  # STEP 3 -- First refactor.  Change convert to an instance method (I
-  # really don't like using class methods for non-class related
-  # activities).
+  # STEP 4 -- Implement two.  Use a simple if test.
   def convert(this_number)
-    "   \n" +
-      "  |\n" +
+    if this_number == 1
       "   \n" +
-      "  |\n" +
-      "   \n" 
+        "  |\n" +
+        "   \n" +
+        "  |\n" +
+        "   \n" 
+    else
+      " - \n" +
+        "  |\n" +
+        " - \n" +
+        "|  \n" +
+        " - \n" 
+    end
   end
 end
 
