@@ -1,19 +1,25 @@
 class LcdConverter
-  # STEP 5 -- Refactor.  Rename this_number -> number.
+  # STEP 6 -- Another Refactor.  Change concatentated strings to
+  # arrays, removing new lines so they can be applied later.
   def convert(number)
-    if number == 1
-      "   \n" +
-        "  |\n" +
-        "   \n" +
-        "  |\n" +
-        "   \n" 
+    segments = if number == 1
+      [
+        "   ",
+        "  |",
+        "   ",
+        "  |",
+        "   ",
+      ]
     else
-      " - \n" +
-        "  |\n" +
-        " - \n" +
-        "|  \n" +
-        " - \n" 
+      [
+        " - ",
+        "  |",
+        " - ",
+        "|  ",
+        " - ",
+      ]
     end
+    segments.map { |seg| "#{seg}\n" }.join
   end
 end
 
