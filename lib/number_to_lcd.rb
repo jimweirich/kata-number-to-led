@@ -1,8 +1,4 @@
 class LcdConverter
-  # STEP 9 -- Implement 12.  Get the high and lo digits, then get the
-  # segments for each.  Figuring out how to join the segments took
-  # some fiddling, but the tests faithfully report when everything is
-  # ok.
   SEGMENTS = {
     1 => [
       "   ",
@@ -76,12 +72,19 @@ class LcdConverter
     ],
   }
 
+  # STEP 10 -- Lots of opportunity for refactoring.  First extract a
+  # digits_segments method.
+
+  def digits_segments(digit)
+    SEGMENTS[digit]
+  end
+  
   def convert(number)
     if number < 10
-      SEGMENTS[number].map { |seg| "#{seg}\n" }.join
+      digits_segments(number).map { |seg| "#{seg}\n" }.join
     else
-      lo = SEGMENTS[number % 10]
-      hi = SEGMENTS[(number/10) % 10]
+      lo = digits_segments(number % 10)
+      hi = digits_segments((number/10) % 10)
       grouped_segments = hi.zip(lo)
       joined_segments = grouped_segments.map { |segs| segs.join(' ') }
       joined_segments.map { |seg| "#{seg}\n" }.join
