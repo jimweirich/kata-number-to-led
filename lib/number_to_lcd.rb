@@ -1,78 +1,28 @@
 class LcdConverter
-  SEGMENTS = {
-    1 => [
-      "   ",
-      "  |",
-      "   ",
-      "  |",
-      "   ",
-    ],
-    2 => [
-      " - ",
-      "  |",
-      " - ",
-      "|  ",
-      " - ",
-    ],
-    3 => [
-      " - ",
-      "  |",
-      " - ",
-      "  |",
-      " - ",
-    ],
-    4 => [
-      "   ",
-      "| |",
-      " - ",
-      "  |",
-      "   ",
-    ],
-    5 => [
-      " - ",
-      "|  ",
-      " - ",
-      "  |",
-      " - ",
-    ],
-    6 => [
-      " - ",
-      "|  ",
-      " - ",
-      "| |",
-      " - ",
-    ],
-    7 => [
-      " - ",
-      "  |",
-      "   ",
-      "  |",
-      "   ",
-    ],
-    8 => [
-      " - ",
-      "| |",
-      " - ",
-      "| |",
-      " - ",
-    ],
-    9 => [
-      " - ",
-      "| |",
-      " - ",
-      "  |",
-      " - ",
-    ],
-    0 => [
-      " - ",
-      "| |",
-      "   ",
-      "| |",
-      " - ",
-    ],
-  }
+  SEGMENTS = {}
 
-  # STEP 17 -- Refactor. Extract the join_lines method.
+  [
+    " - ,   , - , - ,   , - , - , - , - , - ",
+    "| |,  |,  |,  |,| |,|  ,|  ,  |,| |,| |",
+    "   ,   , - , - , - , - , - ,   , - , - ",
+    "| |,  |,|  ,  |,  |,  |,| |,  |,| |,  |",
+    " - ,   , - , - ,   , - , - ,   , - , - ",
+  ].each do |string|
+    string.split(",").each_with_index do |seg, i|
+      SEGMENTS[i] ||= []
+      SEGMENTS[i] << seg
+    end
+  end
+
+  # STEP 18 -- Refactor.  I'm happy with the code at this point.  I
+  # find the overly long hash initialization a bit annoying.  By
+  # lightly encoding the segment definitions, we can dynamically
+  # extract them to initialize the hash.  As a benefit, the encoded
+  # segments are quite easy to visually verify without scrolling
+  # through multiple pages.
+  #
+  # It was a bit tedious to encode the segments, but a simple on the
+  # fly emacs macro made the translation very painless.
 
   def digits_for(n)
     result = []
