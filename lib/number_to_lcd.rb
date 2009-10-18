@@ -72,8 +72,8 @@ class LcdConverter
     ],
   }
 
-  # STEP 12 -- Implement 345.  Getting individual hi/lo digits won't
-  # work so we need to pull individual digits in a loop.
+  # STEP 13 -- This code should work for arbitrary numbers now, so we
+  # uncomment the last remaining test.
 
   def digits_segments(digit)
     SEGMENTS[digit]
