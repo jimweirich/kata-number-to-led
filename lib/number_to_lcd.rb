@@ -72,15 +72,16 @@ class LcdConverter
     ],
   }
 
-
-  # STEP 15 -- Refactor. Inlining the merged_segments local variable.
+  # STEP 16 -- Shouldn't need test for < 10 in convert anymore.  In
+  # removing test, we discover a bug in digits_for that is easily
+  # fixed by changing the while loop into an do/while loop.
 
   def digits_for(n)
     result = []
-    while n > 0
+    begin
       result.unshift(n % 10)
       n /= 10
-    end
+    end while n > 0
     result
   end
 
@@ -94,12 +95,8 @@ class LcdConverter
   end
 
   def convert(number)
-    if number < 10
-      digits_segments(number).map { |seg| "#{seg}\n" }.join
-    else
-      segments = digits_for(number).map { |d| digits_segments(d) }
-      merge_segments(segments).map { |seg| "#{seg}\n" }.join
-    end
+    segments = digits_for(number).map { |d| digits_segments(d) }
+    merge_segments(segments).map { |seg| "#{seg}\n" }.join
   end
 end
 
