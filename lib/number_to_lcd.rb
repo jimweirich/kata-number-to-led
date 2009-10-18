@@ -1,7 +1,6 @@
 class LcdConverter
-  # STEP 7 -- More refactoring.  The if statement isn't going to
-  # scale.  I could go to a case statement, but I think I will jump
-  # directly a hash for the digit segments.
+  # STEP 8 -- Implement 3 through 9 and 0.  This is straightforward,
+  # so I'm not recording each individual step. 
   SEGMENTS = {
     1 => [
       "   ",
@@ -16,7 +15,63 @@ class LcdConverter
       " - ",
       "|  ",
       " - ",
-    ]
+    ],
+    3 => [
+      " - ",
+      "  |",
+      " - ",
+      "  |",
+      " - ",
+    ],
+    4 => [
+      "   ",
+      "| |",
+      " - ",
+      "  |",
+      "   ",
+    ],
+    5 => [
+      " - ",
+      "|  ",
+      " - ",
+      "  |",
+      " - ",
+    ],
+    6 => [
+      " - ",
+      "|  ",
+      " - ",
+      "| |",
+      " - ",
+    ],
+    7 => [
+      " - ",
+      "  |",
+      "   ",
+      "  |",
+      "   ",
+    ],
+    8 => [
+      " - ",
+      "| |",
+      " - ",
+      "| |",
+      " - ",
+    ],
+    9 => [
+      " - ",
+      "| |",
+      " - ",
+      "  |",
+      " - ",
+    ],
+    0 => [
+      " - ",
+      "| |",
+      "   ",
+      "| |",
+      " - ",
+    ],
   }
 
   def convert(number)

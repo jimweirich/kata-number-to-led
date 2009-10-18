@@ -10,14 +10,14 @@ class NumberToLcdTest < Given::TestCase
   Given do 
     Then { expect(convert(1)) == LCD_ONE }
     Then { expect(convert(2)) == LCD_TWO }
-    # Then { expect(convert(3)) == LCD_THREE }
-    # Then { expect(convert(4)) == LCD_FOUR }
-    # Then { expect(convert(5)) == LCD_FIVE }
-    # Then { expect(convert(6)) == LCD_SIX }
-    # Then { expect(convert(7)) == LCD_SEVEN }
-    # Then { expect(convert(8)) == LCD_EIGHT }
-    # Then { expect(convert(9)) == LCD_NINE }
-    # Then { expect(convert(0)) == LCD_ZERO }
+    Then { expect(convert(3)) == LCD_THREE }
+    Then { expect(convert(4)) == LCD_FOUR }
+    Then { expect(convert(5)) == LCD_FIVE }
+    Then { expect(convert(6)) == LCD_SIX }
+    Then { expect(convert(7)) == LCD_SEVEN }
+    Then { expect(convert(8)) == LCD_EIGHT }
+    Then { expect(convert(9)) == LCD_NINE }
+    Then { expect(convert(0)) == LCD_ZERO }
     # Then { expect(convert(12)) == LCD_TWELVE }
     # Then { expect(convert(345)) == LCD_345 }
     # Then { expect(convert(67890)) == LCD_67890 }
